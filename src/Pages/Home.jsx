@@ -1,10 +1,8 @@
 import React from "react";
 import Item from '../Components/Card'
-import Context from "../Context";
 
 const Home = ({isLoading,searchValue,OnChangeSearchItem,setsearchValue,items,favoriteItem,addOnCart,addFavorite}) => {
 
-const {cartItems} = React.useContext(Context)
 
   function renderItems() {
     const filteredItems = items.filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase()))
@@ -18,7 +16,7 @@ const {cartItems} = React.useContext(Context)
             key={index}
             {...el}
             getCartItems={(obj) => addOnCart(obj)}
-            addFavorite={favorite => addFavorite(favorite)}
+            addedFavorited={addFavorite}
             loading={isLoading}
           />
         );
@@ -29,7 +27,7 @@ const {cartItems} = React.useContext(Context)
     return (
         <div className="content p-40">
         <div className="d-flex align-center mb-40 justify-between">
-          <h1>{searchValue ? `Поиск по "${searchValue}"` : "Все кроссовки"}</h1>
+          <h1>{searchValue ? `Поиск по "${searchValue}"` : "Меню"}</h1>
           <div className="search-block d-flex">
             <img src="/img/lupa.svg" alt="search" />
             <input

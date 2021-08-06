@@ -1,37 +1,27 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import Context from '../Context';
-const Header = ({openCart}) => {
+import { useCart } from '../Hooks/useCart';
+const Header = () => {
 
+  const {overStyle} = React.useContext(Context)
+  const { totalPrice } = useCart()
 
-  const {setCartIsOpen} = React.useContext(Context)
-
-  // const [isOpen,setIsOpen] = React.useState(false)
-
-
-  // function CartStyle() {
-  //   openCart()
-  //   setIsOpen({
-  //     overflow: "hidden",
-  //     height: "100%"
-  //   })
-  // }
-  
     return (
         <header className="d-flex justify-between align-center p-40 clear">
           <Link to="/">
         <div className="d-flex align-center">
-          <img width={40} height={40} src="/img/logo.png" alt="logo" />
+          <img width={40} height={40} src="https://assets.faceit-cdn.net/avatars/f2788fb8-8dc3-4413-a579-9e5ab140bdea_1590162723679.jpg" alt="logo" />
           <div>
-            <h3 className="text-uppercase">REACT SNEAKERS</h3>
-            <p>Магазин лучших кроссовок</p>
+            <h3 className="text-uppercase">Последний самурай</h3>
+            <p>ресторан японской кухни</p>
           </div>
         </div>
         </Link>
         <ul className="d-flex align-center">
-          <li style={{cursor:"pointer"}} className="d-flex mr-10" onClick={() => setCartIsOpen(true)}>
+          <li style={{cursor:"pointer"}} className="d-flex mr-10" onClick={() => overStyle("hidden",true)}>
             <img width={18} height={18} src="/img/Group.svg" alt="cart" />
-            <span>1205 руб.</span>
+            <span>{totalPrice} руб.</span>
           </li>
           <li>
             <Link to="/favorite">
@@ -39,7 +29,7 @@ const Header = ({openCart}) => {
             </Link>
           </li>
           <li className="mr-30">
-            <Link to="/profile">
+            <Link to="/orders">
             <img width={18} height={18} src="/img/Union.svg" alt="user" />
             </Link>
           </li>

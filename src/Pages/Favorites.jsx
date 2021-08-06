@@ -2,10 +2,9 @@ import React from "react";
 import Item from '../Components/Card'
 import Context from "../Context";
 
-const Favorites = ({getCartItems,favoriteItem}) => {
+const Favorites = () => {
 
-  const {addFavorite} = React.useContext(Context)
-
+  const {favoriteItem,addFavorite} = React.useContext(Context)
 
     return (
         <div className="content p-40">
@@ -20,8 +19,8 @@ const Favorites = ({getCartItems,favoriteItem}) => {
                 <Item
                   favorited
                   key={index}
+                  addedFavorited={addFavorite}
                   {...el}
-                  addFavorite={(obj) => addFavorite(obj)}
                 />
               );
             })}

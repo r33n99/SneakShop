@@ -3,7 +3,7 @@ import Context from "../Context";
 
 const Info = ({img,title,desc}) => {
 
-    const {setCartIsOpen} = React.useContext(Context)
+    const {overStyle} = React.useContext(Context)
 
   return (
     <div className="d-flex justify-center text-center">
@@ -17,7 +17,7 @@ const Info = ({img,title,desc}) => {
       />
       <p>{desc}</p>
       <div className="cart-total-block">
-        <button onClick={() => setCartIsOpen(false)} className="green-btn justify-between p-30">
+        <button onClick={() => overStyle("auto",false)} className="green-btn justify-between p-30">
             <img className="back" src="/img/backArrow.svg" alt="" />
           Вернуться назад
         </button>
